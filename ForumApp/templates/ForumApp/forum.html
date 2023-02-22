@@ -1,0 +1,15 @@
+{% extends 'ForumApp/base.html' %}
+{% block content %}
+<div class="content">
+    {% for question in questions %}
+    <a href="/question/{{question.id}}" class="question_url">
+        <div class="question">
+            <h1 class="title">{{ question.title }}</h1>
+            <p class="text">{{ question.text }}</p>
+            <h3 class="author">Автор: {{ question.author }}</h3>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

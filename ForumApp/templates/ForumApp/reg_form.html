@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <h1>Реєстрація</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p style="color:red">{{error}}</p>
+        <p><input type="text" name="username" placeholder="Логін" value="{{username}}" autocomplete="off" required></p>
+        <p><input type="email" name="email" placeholder="Пошта" value="{{email}}" autocomplete="off" required></p>
+        <p><input type="password" placeholder="Пароль" autocomplete="off" name="password" value = "{{password}}" required></p>
+        <p><input type="password" placeholder="Повторіть пароль" autocomplete="off" name="password_confirm" value="{{password_confirm}}" required></p>
+        <p><input type="submit" value="Реєстрація"></p>
+    </form>
+</body>
+</html>

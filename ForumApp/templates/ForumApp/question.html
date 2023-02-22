@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ question.title }}</title>
+  </head>
+  <body>
+    <h1>{{ question.title }}</h1>
+    <p>{{ question.text }}</p>
+    <h5>Автор: {{ question.author }}</h5>
+    
+    <h2>Відповіді</h2>
+    <hr>
+    {% for answer in answers %}
+
+    <p>{{ answer.text }}</p>
+    <h5>Автор: {{ answer.author }}</h5>
+    <hr>
+
+    {% endfor %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2>Дати відповідь:</h2>
+        <p>
+          <textarea
+            name="text"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Ваша відповідь"
+          ></textarea>
+        </p>
+        {% if request.user.is_authenticated %}
+          <p><input type="submit" value="Створити" /></p>
+        {% else %}
+          <a href="{% url 'log_form' %}"></a>
+        {% endif %}
+      </form>
+  </body>
+</html>

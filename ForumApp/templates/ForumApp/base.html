@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ForumApp/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>{{ name }}</title>
+</head>
+
+<body>
+    <header class="header">
+       {% if request.user.is_authenticated != True %}
+            <div class="reg_bar">
+                <p class="log_bar"><a href="{% url 'log_form' %}" class="log_reg">Вхід</a>|<a href="{% url 'reg_form' %}" class="log_reg">Реєстрація</a></p>          
+            </div>
+        {% else %}
+            <div class="bar">
+                <a href="{% url 'create_question' %}" class="create_question">Запитати <img class="ask" src="{% static 'ForumApp/img/ask.png' %}" alt=""></a>
+                <p class="user"><img class="user" src="{% static 'ForumApp/img/profile-user.png' %}" alt=""></p>
+            </div>
+        {% endif %}
+    </header>
+    <main class="main">
+        {% block content%}
+        {% endblock %}
+    </main>
+    
+</body>
+
+</html>
